@@ -46,7 +46,6 @@ class Geo_Opt_Activator {
 
         add_option( 'geo_opt_settings', $defaults );
         add_option( 'geo_opt_version', GEO_OPT_VERSION );
-        add_option( 'geo_opt_license_key', '' );
 
         require_once dirname( __DIR__ ) . '/includes/class-geo-opt-sitemap.php';
         Geo_Opt_Sitemap::register_rewrite_rules();

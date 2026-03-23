@@ -191,21 +191,6 @@ class Geo_Opt_Settings {
             array( 'field' => 'delete_data_on_uninstall', 'description' => 'When checked, all GEO Optimizer data (options, post meta, and transients) will be permanently removed when the plugin is deleted.' )
         );
 
-        // License section
-        add_settings_section(
-            'geo_opt_license_section',
-            'License',
-            array( $this, 'render_license_section' ),
-            self::PAGE_SLUG
-        );
-
-        add_settings_field(
-            'geo_opt_license_key_field',
-            'License Key',
-            array( $this, 'render_license_key_field' ),
-            self::PAGE_SLUG,
-            'geo_opt_license_section'
-        );
     }
 
     public function sanitize_settings( array $input ): array {
@@ -286,10 +271,6 @@ class Geo_Opt_Settings {
         echo '<p>Control what happens to plugin data when GEO Optimizer is uninstalled.</p>';
     }
 
-    public function render_license_section(): void {
-        echo '<p>Enter your license key to activate premium features.</p>';
-    }
-
     public function render_checkbox_field( array $args ): void {
         $settings = get_option( self::OPTION_NAME, array() );
         $value    = ! empty( $settings[ $args['field'] ] );
@@ -357,15 +338,4 @@ class Geo_Opt_Settings {
         <?php
     }
 
-    public function render_license_key_field(): void {
-        $key = get_option( 'geo_opt_license_key', '' );
-        ?>
-        <input type="text"
-               name="geo_opt_license_key"
-               value="<?php echo esc_attr( $key ); ?>"
-               class="regular-text"
-               placeholder="Enter your license key" />
-        <p class="description">License activation is not yet available. This field is reserved for future use.</p>
-        <?php
-    }
 }

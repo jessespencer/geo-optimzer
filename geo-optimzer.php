@@ -35,7 +35,6 @@ add_action( 'admin_enqueue_scripts', 'geo_opt_admin_assets' );
 add_action( 'admin_notices', array( 'Geo_Opt_Activator', 'admin_notice_requirements' ) );
 
 function geo_opt_init(): void {
-    require_once GEO_OPT_PLUGIN_DIR . 'includes/class-geo-opt-license.php';
     require_once GEO_OPT_PLUGIN_DIR . 'includes/class-geo-opt-settings.php';
     require_once GEO_OPT_PLUGIN_DIR . 'includes/class-geo-opt-scoring.php';
     require_once GEO_OPT_PLUGIN_DIR . 'includes/class-geo-opt-metabox.php';
@@ -47,7 +46,6 @@ function geo_opt_init(): void {
 
     $settings = get_option( 'geo_opt_settings', array() );
 
-    ( new Geo_Opt_License() )->init();
     ( new Geo_Opt_Settings() )->init();
 
     if ( ! empty( $settings['scoring_enabled'] ) ) {

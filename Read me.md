@@ -96,8 +96,6 @@ Go to **GEO Optimizer** in the WordPress admin sidebar. Everything is on one pag
 | Bot Access Mode | Allow or block the bots listed below | Allow |
 | Bot List | Which AI crawlers to manage | Keep the defaults unless you have a reason to change |
 | Delete Data on Uninstall | Whether to wipe all plugin data when you delete the plugin | Leave off unless you're permanently removing it |
-| License Key | For future premium features | Ignore for now |
-
 **For most sites, the defaults are fine.** Install, activate, and start filling in the per-post fields.
 
 ---
@@ -163,9 +161,6 @@ The WooCommerce features simply don't load. No errors, no wasted resources. The 
 
 **Can AI bots actually read this stuff?**
 Yes. GPTBot, ClaudeBot, and other AI crawlers read structured data (JSON-LD), meta tags, and robots.txt directives. The hidden div with the `<dl>` structure is also parseable by LLMs when they crawl your page content. This is the same approach used by major publishers optimizing for AI citation.
-
-**What does the license key field do?**
-Nothing yet. It's a placeholder for a future premium licensing system. The plugin is fully functional without a key.
 
 
 
