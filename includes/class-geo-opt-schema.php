@@ -26,10 +26,13 @@ class Geo_Opt_Schema {
 
         $schema_type = $this->get_schema_type( $post->ID );
         $schema      = match ( $schema_type ) {
-            'FAQPage' => $this->build_faq_schema( $post ),
-            'HowTo'   => $this->build_howto_schema( $post ),
-            'Product' => $this->build_product_schema( $post ),
-            default   => $this->build_article_schema( $post ),
+            'BlogPosting'   => $this->build_blogposting_schema( $post ),
+            'FAQPage'       => $this->build_faq_schema( $post ),
+            'HowTo'         => $this->build_howto_schema( $post ),
+            'LocalBusiness' => $this->build_localbusiness_schema( $post ),
+            'Product'       => $this->build_product_schema( $post ),
+            'WebPage'       => $this->build_webpage_schema( $post ),
+            default         => $this->build_article_schema( $post ),
         };
 
         if ( empty( $schema ) ) {
@@ -84,6 +87,12 @@ class Geo_Opt_Schema {
             $schema['image'] = $image;
         }
 
+        return $schema;
+    }
+
+    public function build_blogposting_schema( WP_Post $post ): array {
+        $schema = $this->build_article_schema( $post );
+        $schema['@type'] = 'BlogPosting';
         return $schema;
     }
 
@@ -212,6 +221,49 @@ class Geo_Opt_Schema {
             '@type'       => 'Product',
             'name'        => $post->post_title,
             'description' => $excerpt,
+        );
+
+        $image = $this->get_image_schema( $post->ID );
+        if ( $image ) {
+            $schema['image'] = $image;
+        }
+
+        return $schema;
+    }
+
+    public function build_localbusiness_schema( WP_Post $post ): array {
+        $content = apply_filters( 'the_content', $post->post_content );
+        $excerpt = $post->post_excerpt ?: wp_trim_words( wp_strip_all_tags( $content ), 55, '' );
+
+        $schema = array(
+            '@context'    => 'https://schema.org',
+            '@type'       => 'LocalBusiness',
+            'name'        => $post->post_title,
+            'description' => $excerpt,
+            'url'         => get_permalink( $post ),
+        );
+
+        $image = $this->get_image_schema( $post->ID );
+        if ( $image ) {
+            $schema['image'] = $image;
+        }
+
+        return $schema;
+    }
+
+    public function build_webpage_schema( WP_Post $post ): array {
+        $content = apply_filters( 'the_content', $post->post_content );
+        $excerpt = $post->post_excerpt ?: wp_trim_words( wp_strip_all_tags( $content ), 55, '' );
+
+        $schema = array(
+            '@context'      => 'https://schema.org',
+            '@type'         => 'WebPage',
+            'name'          => $post->post_title,
+            'description'   => $excerpt,
+            'url'           => get_permalink( $post ),
+            'datePublished' => get_the_date( 'c', $post ),
+            'dateModified'  => get_the_modified_date( 'c', $post ),
+            'publisher'     => $this->get_publisher_schema(),
         );
 
         $image = $this->get_image_schema( $post->ID );

@@ -44,9 +44,12 @@ class Geo_Opt_Metabox {
             <select name="geo_opt_schema_type" id="geo_opt_schema_type">
                 <option value="" <?php selected( $schema_type, '' ); ?>>Default (from settings)</option>
                 <option value="Article" <?php selected( $schema_type, 'Article' ); ?>>Article</option>
+                <option value="BlogPosting" <?php selected( $schema_type, 'BlogPosting' ); ?>>Blog Post</option>
                 <option value="FAQPage" <?php selected( $schema_type, 'FAQPage' ); ?>>FAQ Page</option>
                 <option value="HowTo" <?php selected( $schema_type, 'HowTo' ); ?>>How To</option>
+                <option value="LocalBusiness" <?php selected( $schema_type, 'LocalBusiness' ); ?>>Local Business</option>
                 <option value="Product" <?php selected( $schema_type, 'Product' ); ?>>Product</option>
+                <option value="WebPage" <?php selected( $schema_type, 'WebPage' ); ?>>Web Page</option>
             </select>
         </div>
 

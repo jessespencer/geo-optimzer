@@ -58,10 +58,13 @@ class Geo_Opt_Settings {
             array(
                 'field'   => 'schema_default_type',
                 'options' => array(
-                    'Article' => 'Article',
-                    'FAQPage' => 'FAQ Page',
-                    'HowTo'   => 'How To',
-                    'Product' => 'Product',
+                    'Article'       => 'Article',
+                    'BlogPosting'   => 'Blog Post',
+                    'FAQPage'       => 'FAQ Page',
+                    'HowTo'         => 'How To',
+                    'LocalBusiness' => 'Local Business',
+                    'Product'       => 'Product',
+                    'WebPage'       => 'Web Page',
                 ),
                 'description' => 'Default schema type for posts. Can be overridden per-post.',
             )
@@ -221,7 +224,7 @@ class Geo_Opt_Settings {
             $sanitized['sitemap_min_score'] = 100;
         }
 
-        $valid_types = array( 'Article', 'FAQPage', 'HowTo', 'Product' );
+        $valid_types = array( 'Article', 'BlogPosting', 'FAQPage', 'HowTo', 'LocalBusiness', 'Product', 'WebPage' );
         if ( ! in_array( $sanitized['schema_default_type'], $valid_types, true ) ) {
             $sanitized['schema_default_type'] = 'Article';
         }
