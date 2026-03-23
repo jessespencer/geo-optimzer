@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: GEO Optimizer
- * Plugin URI: https://example.com/geo-optimizer
+ * Plugin URI: https://www.jessedestroys.com/geo-optimizer
  * Description: Optimize your content for AI search engines and generative engine optimization (GEO). Schema markup, content scoring, AI snippet optimization, and AI bot crawlability management.
  * Version: 1.0.0
  * Author: GEO Optimizer
- * Author URI: https://example.com
+ * Author URI: https://www.jessedestroys.com
  * Requires at least: 6.0
  * Tested up to: 6.9
  * Requires PHP: 8.0
