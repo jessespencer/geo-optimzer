@@ -43,7 +43,7 @@ Compatible with RankMath — skips the AI summary tag if RankMath has already se
 1. Download or zip the `geo-optimzer` folder
 2. In WordPress: **Plugins > Add Plugin > Upload Plugin** > select the zip
 3. Activate and configure under **GEO Optimizer** in the admin sidebar
-4. Go to **Settings > Permalinks** and click Save to register the AI sitemap URL
+4. Go to **Settings > Permalinks** and click Save — this forces WordPress to rebuild its URL routing rules so the `/ai-sitemap.xml` route works. There's nothing GEO-specific on that page; you only need to do this once if the sitemap URL returns a 404
 
 ## Settings
 
